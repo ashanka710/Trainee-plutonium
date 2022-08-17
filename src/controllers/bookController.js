@@ -1,23 +1,18 @@
 const { count } = require("console")
 const BookModel = require("../models/bookModel")
 
-const createBook = async function(req, res) {
-    let data = req.body.data
 
+const createBook = async function(req, res) {
+    let data = req.body
     let savedData = await BookModel.create(data)
     res.send({ msg: savedData })
 }
 
 
-// const Booklist = async function(req, res) {
 
-//     let bookInfo = await BookModel.find().select({ bookName: 1, authorName: 1, _id: 0 })
-//     res.send({ msg: bookInfo })
-
-// }
 const Booklist = async function(req, res) {
-    let bookInfo = await BookModel.find().select({ bookName: 1, authorName: 1, _id: 0 })
-    res.send({ msg: bookInfo })
+    let booklist = await BookModel.find().select({ bookName: 1, authorName: 1, _id: 0 })
+    res.send({ msg: booklist })
 }
 
 const getBooksInYear = async function(req, res) {
@@ -25,17 +20,23 @@ const getBooksInYear = async function(req, res) {
 
     let savedData = await BookModel.find({
         year: {
-            $eq: bookyear
+            $eq: 2000
         }
+
     })
     res.send({ msg: savedData })
 
 }
 const getParticularBooks = async function(req, res) {
 
-    let savesData = await BookModel.find()
-    res.send({ msg: savesData })
+    let name = req.query.authorName
+    let year = req.query.year
+    let ParticularBooks = await BookModel.find({ $or: [{ authorName: name }, { year: year }] })
+    res.send({ msg: ParticularBooks })
 }
+
+
+
 const getXINRBooks = async function(req, res) {
     let savedData = await BookModel.find({
         "prices.induanPrice": {
@@ -132,7 +133,6 @@ const getBooksData = async function(req, res) {
 module.exports.createBook = createBook
 module.exports.getBooksData = getBooksData
 module.exports.Booklist = Booklist
-
 module.exports.getBooksInYear = getBooksInYear
 module.exports.getParticularBooks = getParticularBooks
 module.exports.getXINRBooks = getXINRBooks
