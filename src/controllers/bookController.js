@@ -1,18 +1,18 @@
 const { count } = require("console")
-const BookModel = require("../models/bookModel")
+const bookModel = require("../models/bookModel")
+
+// const userModel = require("../models/userModel")
 
 
-const createBook = async function (req, res) {
+const createBook = async function(req, res) {
     try {
         let data = req.body
         console.log(data)
-        if ( Object.keys(data).length != 0) {
-            let savedData = await BookModel.create(data)
+        if (Object.keys(data).length != 0) {
+            let savedData = await bookModel.create(data)
             res.status(201).send({ msg: savedData })
-        }
-        else res.status(400).send({ msg: "BAD REQUEST"})
-    }
-    catch (err) {
+        } else res.status(400).send({ msg: "BAD REQUEST" })
+    } catch (err) {
         console.log("This is the error :", err.message)
         res.status(500).send({ msg: "Error", error: err.message })
     }
@@ -59,35 +59,33 @@ const createBook = async function (req, res) {
 
 
 
-const getBooksData = async function (req, res) {
-    let allBooks = await BookModel.find({ authorName: "HO" })
+const getBooksData = async function(req, res) {
+    let allBooks = await bookModel.find({ authorName: "HO" })
     console.log(allBooks)
     if (allBooks.length > 0) res.send({ msg: allBooks, condition: true })
     else res.send({ msg: "No books found", condition: false })
 }
 
 
-const updateBooks = async function (req, res) {
+const updateBooks = async function(req, res) {
     let data = req.body // {sales: "1200"}
-    // let allBooks= await BookModel.updateMany( 
-    //     { author: "SK"} , //condition
-    //     { $set: data } //update in data
-    //  )
-    let allBooks = await BookModel.findOneAndUpdate(
-        { authorName: "ABC" }, //condition
+        // let allBooks= await BookModel.updateMany( 
+        //     { author: "SK"} , //condition
+        //     { $set: data } //update in data
+        //  )
+    let allBooks = await bookModel.findOneAndUpdate({ authorName: "ABC" }, //condition
         { $set: data }, //update in data
-        { new: true, upsert: true } ,// new: true - will give you back the updated document // Upsert: it finds and updates the document but if the doc is not found(i.e it does not exist) then it creates a new document i.e UPdate Or inSERT
+        { new: true, upsert: true }, // new: true - will give you back the updated document // Upsert: it finds and updates the document but if the doc is not found(i.e it does not exist) then it creates a new document i.e UPdate Or inSERT
     )
 
     res.send({ msg: allBooks })
 }
 
-const deleteBooks = async function (req, res) {
+const deleteBooks = async function(req, res) {
     // let data = req.body 
-    let allBooks = await BookModel.updateMany(
-        { authorName: "FI" }, //condition
+    let allBooks = await bookModel.updateMany({ authorName: "FI" }, //condition
         { $set: { isDeleted: true } }, //update in data
-        { new: true } ,
+        { new: true },
     )
 
     res.send({ msg: allBooks })
@@ -95,9 +93,9 @@ const deleteBooks = async function (req, res) {
 
 
 
-const totalSalesPerAuthor = async function (req, res) {
+const totalSalesPerAuthor = async function(req, res) {
     // let data = req.body 
-    let allAuthorSales = await BookModel.aggregate(
+    let allAuthorSales = await bookModel.aggregate(
         [
             { $group: { _id: "$authorName", totalNumberOfSales: { $sum: "$sales" } } },
             { $sort: { totalNumberOfSales: -1 } }
