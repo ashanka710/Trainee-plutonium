@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    background-color: black;
+    color: white;
+}
+
+$blue : rgb(62, 223, 255);
+
+.App{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 11rem;
+
+    h1{
+        margin-bottom: 2rem;
+
+        span{
+            color: $blue;
+        }
+    }
+
+    textarea{
+        width: 30vw;
+        height: 20vh;
+        resize: none;
+        border-radius: 1rem;
+        font-size: large;
+        padding: .5rem 1rem;
+    }
+    
+    .main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        button{
+            margin-top: 2rem;
+            cursor: pointer;
+            height: 5.5vh;
+            width: 10.5vw;
+            border-radius: 2rem;
+            border: none;
+            background-color: $blue;
+            font-size: large;
+
+            &:hover{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        .result{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+
+            p{
+                // color: white;
+            }
+        }
+
+        .footer{
+            position: fixed;
+            bottom: 0;
+            font-size: 1rem;
+            color: rgb(170, 161, 161);
+
+            span{
+                color: $blue;
+            }
+        }
+    }
+}
