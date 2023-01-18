@@ -8,16 +8,15 @@ function App() {
   
   const handleClick = (e) => {
     e.preventDefault();
-    setText(e.target.value)
+    setText(e.target.value.toUpperCase())
   }
 
   const MakeTrue = () => {
     setPara(true)
   }
-
+  
   const handleSubmit = () => {
-    let result = text.toUpperCase()
-    setText(result)
+    setText(text)
   }
 
   const bind = () => {
@@ -32,7 +31,7 @@ function App() {
       <textarea placeholder='Enter your text here' onChange={handleClick}/>
       <button onClick={bind}>Convert</button>
       <div className="result">
-      {para && <p> {text}</p>}
+      {para && <p> {text}</p> }
       </div>
       <div className='footer'>
       Made with React by <span>Muhaz</span> 
