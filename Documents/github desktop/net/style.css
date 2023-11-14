@@ -1,0 +1,105 @@
+ body {
+     margin: 0;
+     /* display: flex; */
+     /* justify-content: center; */
+     /* height: 100vh; */
+     /* background-color: rgb(20, 20, 19); */
+     /* background-image: url(https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg); */
+     /* filter: blur(8px);
+     -webkit-filter: blur(8px); */
+     font-family: initial;
+ }
+ 
+ .section {
+     background-image: url(https://www.okynemedialab.com/wp-content/uploads/2019/11/netflix-background-50-Black-1024x576.jpg);
+     height: 550px;
+     /* filter: blur(1px);
+     -webkit-filter: blur(1px) */
+ }
+ 
+ .container {
+     display: flex;
+     align-items: center;
+     padding: 2px;
+     color: rgba(241, 218, 218, 0.856);
+     /* background-color: rgba(16, 16, 16, 0.969); */
+ }
+ 
+ .logo {
+     display: flex;
+     padding-top: 10px;
+     padding-left: 10px;
+ }
+ 
+ .lang {
+     display: block;
+     padding-left: 590px;
+ }
+ 
+ #cars {
+     border: solid rgb(236, 231, 231) 2px;
+     height: 30px;
+     color: white;
+     background-color: rgb(16, 13, 18);
+     padding-left: 60px;
+ }
+ 
+ #id {
+     background-color: rgb(236, 234, 237);
+ }
+ 
+ #btn {
+     background-color: orangered;
+     border: none;
+     height: 30px;
+     width: 70px;
+     border-radius: 20px;
+ }
+ 
+ .btn {
+     padding-left: 30px;
+     height: 30px;
+     width: 50px;
+ }
+ 
+ #tu {
+     height: 639px;
+     width: 100%;
+     /* background-image: url(https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg); */
+ }
+ 
+ .element {
+     display: block;
+     padding: 90px;
+     padding-left: 35%;
+ }
+ 
+ #text {
+     padding: 10px;
+     width: 500px;
+ }
+ 
+ #text2 {
+     margin: 10px;
+ }
+ 
+ #h1 {
+     color: white;
+     height: 40px;
+     width: 500px;
+ }
+ 
+ #h2 {
+     text: bold;
+     color: azure;
+     width: 500px;
+ }
+ 
+ .input {
+     text-decoration: black;
+     width: 500px;
+ }
+ 
+ #btn2 {
+     background-color: orangered;
+ }
